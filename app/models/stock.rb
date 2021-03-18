@@ -1,4 +1,8 @@
 class Stock < ApplicationRecord
+  has_many :user_stocks
+  has_many :users, through: :user_stocks
+
+  validates :name, :ticker, presence: true
 
   #self=> make it as a class method. it doesn't have to depend on instance var
   #you can call the method directly 
