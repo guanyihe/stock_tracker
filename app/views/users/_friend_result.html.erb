@@ -12,8 +12,14 @@
             <td><strong>Email: </strong> <%= friend.email %></td>
             <td><strong>Action: </strong> <%= link_to "View Profile", '#',
                                         class: "btn btn-sm btn-success" %>
-                <%= link_to 'Follow friend?', '#',
+              <% if current_user.not_friends_with?(friend.id) %>
+                <%= link_to 'Follow friend?', friendships_path(frd: friend),
                                     class: "btn btn-sm btn-success", method: :post %></td>
+              <% else %>
+                <span class="badge badge-secondry">
+                  You are friends
+                </span>
+              <% end %>
           </tr>
         </tbody>
       </table>  
